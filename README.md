@@ -23,16 +23,15 @@ optional arguments:
 ```
 ### Output
 ```
-python3 deckcheck.py --point-file points.csv --deck-file ~/mtgdecks/7ph-lifegain.dck
+python3 deckcheck.py --point-file points.csv --deck-file ~/mtgdecks/game-night/7ph-goodbye-horses.dck 
 
 There are 86 pointed cards in the list!
-
 Analyzing deck...
+  Strip Mine x 1 = 2
   Sun Droplet x 1 = 1
+  Maze of Ith x 1 = 2
   Authority of the Consuls x 1 = 1
   Sol Ring x 1 = 3
   Karakas x 1 = 3
-  Maze of Ith x 1 = 2
-  Strip Mine x 1 = 2
-*** Your deck is ILLEGAL, using 12 points when only 7 are allowed!
+*** SHAME! Your deck is ILLEGAL, using 12 of a 7 point limit!
 ```
