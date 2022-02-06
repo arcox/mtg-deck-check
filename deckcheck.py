@@ -20,7 +20,9 @@ def load_deck_list(fname):
   with open(fname, 'rt') as f:
     lines = f.readlines()
   for line in lines:
-    if line and not line.startswith('SB') and not line.startswith('LAYOUT'):
+    if line:
+      if line.startswith('SB') or line.startswith('LAYOUT') or line.startswith('NAME'):
+        continue
       card_name = line.split('] ')[1].strip()
       card_num = int(line.split()[0])
       if card_name not in deck_list:
