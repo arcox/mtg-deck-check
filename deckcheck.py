@@ -12,6 +12,7 @@ def load_point_list(fname):
     for row in reader:
       for k, v in row.items():
         if v:
+          v = v.replace("’", "'") # fix rogue apostrophes
           pointed_cards[v] = int(k[0])
 
 
@@ -62,7 +63,6 @@ def main():
   else:
     print('*** SHAME! Your deck is ILLEGAL, using {} of a {} point limit!'
           .format(point_sum, args.point_limit))
-
 
 if __name__ == '__main__':
   main()
