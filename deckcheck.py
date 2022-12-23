@@ -4,7 +4,6 @@ import pathlib
 
 pointed_cards = {}
 deck_list = {}
-point_sum = 0
 
 def load_point_list(fname):
   with open(fname, 'rt') as f:
@@ -33,12 +32,13 @@ def load_deck_list(fname):
 
 
 def calculate_points():
-  global point_sum
+  point_sum = 0
   cards = pointed_cards.keys() & deck_list.keys()
   for card in cards:
     points = pointed_cards[card] * deck_list[card]
     print('  {} x {} = {}'.format(card, deck_list[card], points))
     point_sum += points
+  return point_sum
 
 
 def main():
@@ -56,7 +56,7 @@ def main():
 
   print('\nThere are {} pointed cards in the list!'.format(len(pointed_cards)))
   print('Analyzing deck...')
-  calculate_points()
+  point_sum = calculate_points()
   if point_sum <= args.point_limit:
     print('*** Your deck is LEGAL, using {} of {} possible points! :D'
           .format(point_sum, args.point_limit))
