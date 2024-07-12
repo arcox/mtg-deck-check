@@ -8,16 +8,16 @@ Verifies that an Xmage deck file complies with a point list.
 3. Run the script using Python 3
 
 ```
-usage: deckcheck.py [-h] --point-file POINT_FILE --deck-file DECK_FILE [--point-limit POINT_LIMIT]
+usage: deckcheck.py [-h] --deck-file DECK_FILE [--point-file POINT_FILE] [--point-limit POINT_LIMIT]
 
 Highlander Deck Checker
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
-  --point-file POINT_FILE
-                        Path to JSON file of pointed cards. Default="./points.json"
   --deck-file DECK_FILE
                         Path to your deck ".dck" file
+  --point-file POINT_FILE
+                        Path to JSON file of pointed cards. Default="./points.json"
   --point-limit POINT_LIMIT
                         Number of points allowed per deck. Default=7
 ```
@@ -25,7 +25,7 @@ optional arguments:
 ```
 python3 deckcheck.py --deck-file ~/mtgdecks/game-night/7ph-goodbye-horses.dck 
 
-There are 86 pointed cards in the list!
+There are 85 pointed cards in the list!
 Analyzing deck...
   Strip Mine x 1 = 2
   Sun Droplet x 1 = 1
