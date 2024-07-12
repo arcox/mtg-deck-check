@@ -3,7 +3,7 @@ Verifies that an Xmage deck file complies with a point list.
 
 # Quick Tutorial
 
-1. Download the point list from Google Drive as a CSV (provided in repo as `points.csv`).
+1. Make sure the `points.json` file is present alongside the deck check script (provided in repo as `points.json`).
 2. Build a deck in Xmage. Save it in the default `.dck` format.
 3. Run the script using Python 3
 
@@ -15,7 +15,7 @@ Highlander Deck Checker
 optional arguments:
   -h, --help            show this help message and exit
   --point-file POINT_FILE
-                        Path to csv file of pointed cards.
+                        Path to JSON file of pointed cards. Default="./points.json"
   --deck-file DECK_FILE
                         Path to your deck ".dck" file
   --point-limit POINT_LIMIT
@@ -23,7 +23,7 @@ optional arguments:
 ```
 ### Output
 ```
-python3 deckcheck.py --point-file points.csv --deck-file ~/mtgdecks/game-night/7ph-goodbye-horses.dck 
+python3 deckcheck.py --deck-file ~/mtgdecks/game-night/7ph-goodbye-horses.dck 
 
 There are 86 pointed cards in the list!
 Analyzing deck...

@@ -1,18 +1,17 @@
 import argparse
-import csv
+import json
 import pathlib
 
 pointed_cards = {}
 deck_list = {}
 
 def load_point_list(fname):
+  pl_data = None
   with open(fname, 'rt') as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-      for k, v in row.items():
-        if v:
-          v = v.replace("’", "'") # fix rogue apostrophes
-          pointed_cards[v] = int(k[0])
+    pl_data = json.load(f)
+  for k, v in pl_data.items():
+    k = k.replace("’", "'") # fix rogue apostrophes
+    pointed_cards[k] = v
 
 
 def load_deck_list(fname):
@@ -43,10 +42,10 @@ def calculate_points():
 
 def main():
   parser = argparse.ArgumentParser(description='Highlander Deck Checker')
-  parser.add_argument('--point-file', type=pathlib.Path, required=True,
-                      help='Path to csv file of pointed cards.')
   parser.add_argument('--deck-file', type=pathlib.Path, required=True,
                       help='Path to your deck ".dck" file')
+  parser.add_argument('--point-file', type=pathlib.Path, default="./points.json", required=False,
+                      help='Path to JSON file of pointed cards. Default="./points.json"')
   parser.add_argument('--point-limit', type=int, default=7, required=False,
                       help='Number of points allowed per deck. Default=7')
   args = parser.parse_args()
@@ -54,7 +53,7 @@ def main():
   load_point_list(args.point_file)
   load_deck_list(args.deck_file)
 
-  print('\nThere are {} pointed cards in the list!'.format(len(pointed_cards)))
+  print('There are {} pointed cards in total...'.format(len(pointed_cards)))
   print('Analyzing deck...')
   point_sum = calculate_points()
   if point_sum <= args.point_limit:
